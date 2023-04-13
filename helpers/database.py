@@ -27,9 +27,12 @@ class DatabaseConnection(object):
             self.dbCursor.execute(sql)
         self.dbConnection.commit()
 
-    def getRows(self, sql, data=None):
-        self.dbCursor.execute(sql)
-        return self.dbCursor.fetchall()
+    def getRows(self, sql, data=None, all=False):
+        self.dbCursor.execute(sql, data)
+        if all:
+            return self.dbCursor.fetchall()
+        else:
+            return self.dbCursor.fetchone()
 
 
 databaseSession = DatabaseConnection(settingsConfig.DatabaseSettings)
