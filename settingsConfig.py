@@ -3,6 +3,7 @@ import typing
 from decouple import config
 from starlette.responses import Response
 
+
 class _SettingsConfig:
     def __init__(self):
         self.__settingsConfig = self.__loadSettings()

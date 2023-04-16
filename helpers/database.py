@@ -1,5 +1,6 @@
-from settingsConfig import settingsConfig
 import psycopg2
+
+from settingsConfig import settingsConfig
 
 
 class DatabaseConnection(object):

@@ -23,11 +23,11 @@ class SqlQueries:
 
     @staticmethod
     def dropTableWriters():
-        return """DROP TABLE writers"""
+        return """DROP TABLE IF EXISTS writers CASCADE"""
 
     @staticmethod
     def dropTableBooks():
-        return """DROP TABLE books"""
+        return """DROP TABLE IF EXISTS books CASCADE"""
 
     @staticmethod
     def insertWriter(name):
@@ -57,7 +57,6 @@ class SqlQueries:
 
     @staticmethod
     def selectFullDataAboutWriter(writerID):
-        print("writerID", writerID)
         return """
         SELECT 
         json_build_object(
@@ -74,3 +73,11 @@ class SqlQueries:
         WHERE writers.id = %(writerID)s AND books.author_id = writers.id
         GROUP BY writers.id
         """
+
+    @staticmethod
+    def selectAllWriters():
+        return """SELECT * FROM writers"""
+
+    @staticmethod
+    def selectAllBooks():
+        return """SELECT * FROM books"""
